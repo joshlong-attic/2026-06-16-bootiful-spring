@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.jdbc.core.dialect.JdbcPostgresDialect;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.resilience.annotation.ConcurrencyLimit;
 import org.springframework.resilience.annotation.EnableResilientMethods;
@@ -29,6 +30,11 @@ public class AdoptionsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AdoptionsApplication.class, args);
+    }
+
+    @Bean
+    JdbcPostgresDialect jdbcPostgresDialect (){
+        return JdbcPostgresDialect.INSTANCE;
     }
 }
 
